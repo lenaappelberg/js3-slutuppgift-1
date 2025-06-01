@@ -1,9 +1,17 @@
+import Events from '@/components/section/events'
+import { getEvents } from '@/sanity/lib/api'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
-const event = () => {
+const Event = async () => {
+  //event page
+  //console.log(events) 
   return (
-    <div>event</div>
+    <div className="wrapper">
+      <Events/>
+    </div>
   )
 }
 
-export default event
+export default Event

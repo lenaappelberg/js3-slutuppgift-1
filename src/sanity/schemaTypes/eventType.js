@@ -1,0 +1,56 @@
+import { DateTimeInput, defineArrayMember, defineField, defineType } from "sanity";
+
+export const eventType=defineType({
+    name:"event",
+    title:"event",
+    type:"document",
+    fields:[
+        defineField({
+            name:"name",
+            type:"string"
+        }),
+        defineField({
+            name:"slug",
+            type:"slug",
+            options:{
+                source:"name"
+            }
+        }),
+        defineField({
+            name:"image",
+            type:"image",
+            options:{hotspot:true},
+            fields:[
+                defineField({
+                    name:"alt",
+                    title:"Alt text",
+                    type:"string"
+                })
+            ]
+        }),
+        defineField({
+            name:"description",
+            type:"blockContent"
+        }),
+         defineField({
+                    name:"features",
+                    type:"array",
+                    of:[
+                        defineArrayMember({
+                            name:"feature",
+                            type:"object",
+                            fields:[
+                                defineField({
+                                name:"date",
+                                type:"datetime"
+                                }),
+                                defineField({
+                                name:"location",
+                                type:"geopoint"
+                                })
+                            ]
+                        })
+                    ]
+                })
+    ]
+})
